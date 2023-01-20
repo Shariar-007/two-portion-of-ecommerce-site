@@ -73,7 +73,7 @@ export class ProductListComponent implements OnInit {
       if(this.localStorageService.getDataFromLocalStorage('products') && this.localStorageService.getDataFromLocalStorage('products') != '') {
         this.addProductForm.get('id')?.setValue(Math.floor((Math.random() * 1000)));
         // @ts-ignore
-        let products: any[] = JSON.parse(this.taskManagementService.getDataFromLocalStorage('products'));
+        let products: Product[] = JSON.parse(this.localStorageService.getDataFromLocalStorage('products'));
         products.push(this.addProductForm.value);
         this.localStorageService.setDataToLocalStorage('products', JSON.stringify(products));
         this.closeModal();

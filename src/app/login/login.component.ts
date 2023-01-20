@@ -3,8 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import {MESSAGES, PATTERN} from "../shared/services/messages";
 import {LocalStorageService} from "../shared/services/local-storage.service";
-import {ToastrService} from "ngx-toastr";
-
+// import {ToastrService} from "ngx-toastr";
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -17,8 +16,7 @@ export class LoginComponent implements OnInit {
   submitted: boolean = false;
   serverError: string = '';
 
-  constructor(public router: Router, private fb: FormBuilder, private localStorageService: LocalStorageService,
-              private toastr: ToastrService) {
+  constructor(public router: Router, private fb: FormBuilder, private localStorageService: LocalStorageService) {
     this.loginForm = fb.group({
       email: [null,
         Validators.compose([
@@ -40,7 +38,7 @@ export class LoginComponent implements OnInit {
       this.localStorageService.setDataToLocalStorage('role', 'admin');
       this.router.navigate(['/products']);
     } else {
-       this.toastr.error("Invalid email and password");
+       // this.toast.error("Invalid email and password");
     }
 
   }

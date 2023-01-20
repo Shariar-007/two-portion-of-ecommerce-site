@@ -8,18 +8,12 @@ const routes: Routes = [
   {
     path: 'products',
     loadChildren: () => import('./layout/layout.module').then((m) => m.LayoutModule),
-    // canActivate: [AdminGuard],
-    // data: {
-    //   expectedRole: 'admin'
-    // }
   },
   {
     path: '', pathMatch: 'full', redirectTo: 'login',
-    // canActivate: [AuthGuard],
   },
   {
     path: 'login', component: LoginComponent,
-    // canActivate: [AnonymousNavigationGuard],
   },
   {
     path: 'not-found', component: NotFoundComponent,

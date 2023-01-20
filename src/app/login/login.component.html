@@ -3,11 +3,6 @@
     <div class="login-box">
 
       <h1>Sign-in Form</h1>
-
-<!--      <div class="alert alert-dismissible alert-danger text-center" *ngIf="serverError">-->
-<!--        {{serverError}}-->
-<!--      </div>-->
-<!--      (ngSubmit)="submitForm(loginForm.value)"-->
       <form role="form" [formGroup]="loginForm" (ngSubmit)="submitForm()">
         <div class="form-content">
           <div class="form-content">
@@ -37,7 +32,7 @@
               <button class="btn rounded-btn" type="submit" name="action" [disabled]="loginForm.invalid">Entry As An Admin</button> &nbsp;
             </div>
             <div class="col-md-4">
-              <button class="btn rounded-btn">Skip</button> &nbsp;
+              <button class="btn rounded-btn" (click)="onClickSkip()">Skip</button> &nbsp;
             </div>
           </div>
 

@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {NgbDateStruct, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {LocalStorageService} from "../../../shared/services/local-storage.service";
 import {Product} from "../../../shared/models/product.model";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-product-list',
@@ -16,7 +17,8 @@ export class ProductListComponent implements OnInit {
   products: Product[] = [];
   product : Product | undefined;
 
-  constructor(private modalService: NgbModal, private fb: FormBuilder, private localStorageService: LocalStorageService) { }
+  constructor(private modalService: NgbModal, private fb: FormBuilder, private localStorageService: LocalStorageService,
+              public router: Router) { }
 
   ngOnInit(): void {
     this.addProduct();
@@ -111,5 +113,10 @@ export class ProductListComponent implements OnInit {
     this.localStorageService.setDataToLocalStorage('products', JSON.stringify(products));
     this.ngOnInit();
     this.closeModal();
+  }
+
+  OnClickLogout() {
+    localStorage.removeItem('role');
+    this.router.navigate(['login']);
   }
 }

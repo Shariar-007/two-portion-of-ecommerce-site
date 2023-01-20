@@ -3,6 +3,7 @@
     <div class="row justify-content-center mb-3">
       <div class="col-md-12 col-xl-10 mb-3">
         <button type="button" class="btn btn-primary" (click)="openModal(addProduct)">Add a product</button>
+        <button type="button" class="btn btn-primary" (click)="OnClickLogout()">logout</button>
       </div>
       <div class="col-md-12 col-xl-10" *ngIf="products.length === 0">
         <p>No Product Available, please add one.</p>

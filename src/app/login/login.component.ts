@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import {MESSAGES, PATTERN} from "../shared/services/messages";
+import {LocalStorageService} from "../shared/services/local-storage.service";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-login',
@@ -15,7 +17,8 @@ export class LoginComponent implements OnInit {
   submitted: boolean = false;
   serverError: string = '';
 
-  constructor(public router: Router, private fb: FormBuilder,) {
+  constructor(public router: Router, private fb: FormBuilder, private localStorageService: LocalStorageService,
+              private toastr: ToastrService) {
     this.loginForm = fb.group({
       email: [null,
         Validators.compose([
@@ -32,9 +35,18 @@ export class LoginComponent implements OnInit {
   }
 
   submitForm() {
-    console.log(this.loginForm.getRawValue());
-    // if(this.loginForm.get('email')?.value === 'admin@gmail.com' && this.loginForm.get('password')?.value === '@dmin1234') {
+    // console.log(this.loginForm.getRawValue());
+    if(this.loginForm.get('email')?.value === 'admin@gmail.com' && this.loginForm.get('password')?.value === '@dmin1234') {
+      this.localStorageService.setDataToLocalStorage('role', 'admin');
       this.router.navigate(['/products']);
-    // }
+    } else {
+       this.toastr.error("Invalid email and password");
+    }
+
+  }
+
+  onClickSkip() {
+    this.localStorageService.setDataToLocalStorage('role', 'user');
+    this.router.navigate(['products/all']);
   }
 }

@@ -23,10 +23,6 @@ export class ProductListComponent implements OnInit {
     if(this.localStorageService.getDataFromLocalStorage('products') && this.localStorageService.getDataFromLocalStorage('products') != '') {
       // @ts-ignore
       this.products = JSON.parse(this.localStorageService.getDataFromLocalStorage('products'));
-      // console.log(this.tasks);
-      // this.toDoTasks = this.tasks.filter((item: { status: string; }) => item.status === 'toDo');
-      // this.inProgressTasks = this.tasks.filter((item: { status: string; }) => item.status === 'inProgress');
-      // this.doneTasks = this.tasks.filter((item: { status: string; }) => item.status === 'done');
     }
   }
 
@@ -53,10 +49,6 @@ export class ProductListComponent implements OnInit {
       description: [""],
     });
   }
-
-  onFileChanged(event: any) {
-    this.addProductForm.get('productImage')?.setValue(event.target.files[0].name)
-    }
 
   submitForm() {
     // console.log(this.addProductForm.getRawValue());

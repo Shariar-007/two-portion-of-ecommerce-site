@@ -64,13 +64,8 @@
           </div>
 
           <div class="form-group">
-            <label>Product Image<span class="text-danger">*</span></label>
-            <input class="form-control" type="file" id="formFile" (change)="onFileChanged($event)">
-<!--            <button type="button" class="btn btn-primary mt-2" (click)="fileInput.click()">-->
-<!--              <input style="display: none" type="file" multiple (change)="onFileChanged($event)" #fileInput>-->
-<!--              <i class="mdi mdi-plus btn-icon-prepend"></i>-->
-<!--              Browse-->
-<!--            </button>-->
+            <label>Product Image Link<span class="text-danger">*</span></label>
+            <input type="text" class="form-control" formControlName="productImage"/>
           </div>
 
 

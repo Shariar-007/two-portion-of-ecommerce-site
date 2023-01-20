@@ -1,0 +1,29 @@
+
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Product Details</h2>
+      <div class="form-group">
+        <label>Product Name</label>: {{product?.name}}
+      </div>
+      <div class="form-group">
+        <label>Product Image</label>:
+        <img [src]="product?.productImage" style="height: 100px; width: 100px">
+      </div>
+      <div class="form-group">
+        <label>Product Price</label>: {{product?.productPrize}}
+      </div>
+      <div class="form-group">
+        <label>Brand Name</label>: {{product?.brandName}}
+      </div>
+      <div class="form-group">
+        <label>Description</label>: {{product?.description}}
+      </div>
+      <br/>
+      <button type="button" class="btn btn-secondary" routerLink="/products/all">Back</button>
+    </div>
+  </div>
+</div>
+
+

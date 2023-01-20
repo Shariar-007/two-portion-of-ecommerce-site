@@ -1,0 +1,49 @@
+<div class="login-page">
+  <div class="row">
+    <div class="login-box">
+
+      <h1>Sign-in Form</h1>
+
+<!--      <div class="alert alert-dismissible alert-danger text-center" *ngIf="serverError">-->
+<!--        {{serverError}}-->
+<!--      </div>-->
+<!--      (ngSubmit)="submitForm(loginForm.value)"-->
+      <form role="form" [formGroup]="loginForm" (ngSubmit)="submitForm()">
+        <div class="form-content">
+          <div class="form-content">
+            <div class="form-group">
+              <label >Email</label>
+              <input type="email" class="form-control input-underline input-lg" placeholder="Email"
+                     formControlName="email" autocomplete="off">
+              <div *ngIf="loginForm.controls['email'].hasError('required')  && submitted" class="lc-error">{{messages.required}}</div>
+
+              <div *ngIf="loginForm.controls['email'].hasError('pattern') &&  loginForm.controls['email'].touched && !loginForm.controls['email'].valid && submitted"
+                   class="lc-error">{{messages.email}}</div>
+            </div>
+
+            <div class="form-group mt-2">
+              <label >Password</label>
+              <input type="password" class="form-control input-underline input-lg" placeholder="Password"
+                     formControlName="password"  autocomplete="off">
+              <div *ngIf="loginForm.controls['password'].hasError('required') && submitted"
+                   class="lc-error">{{messages.required}}</div>
+            </div>
+          </div>
+          &nbsp;
+          <br>
+          <br>
+          <div class="row">
+            <div class="col-md-8">
+              <button class="btn rounded-btn" type="submit" name="action" [disabled]="loginForm.invalid">Entry As An Admin</button> &nbsp;
+            </div>
+            <div class="col-md-4">
+              <button class="btn rounded-btn">Skip</button> &nbsp;
+            </div>
+          </div>
+
+
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

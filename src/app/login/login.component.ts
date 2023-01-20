@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   pattern = PATTERN;
   loginForm: FormGroup;
   submitted: boolean = false;
+  valid: boolean = false;
   serverError: string = '';
 
   constructor(public router: Router, private fb: FormBuilder, private localStorageService: LocalStorageService) {
@@ -35,10 +36,11 @@ export class LoginComponent implements OnInit {
   submitForm() {
     // console.log(this.loginForm.getRawValue());
     if(this.loginForm.get('email')?.value === 'admin@gmail.com' && this.loginForm.get('password')?.value === '@dmin1234') {
+      this.valid = false;
       this.localStorageService.setDataToLocalStorage('role', 'admin');
       this.router.navigate(['/products']);
     } else {
-       // this.toast.error("Invalid email and password");
+       this.valid = true;
     }
 
   }
